@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+
+   demo-app-1:
+      image: jinternals/demo-app:latest
+      container_name: demo-app-1
+      ports:
+        - "8081:8080"
+      environment: 
+        INSTANCE_ID: 1
+ 
+   demo-app-2:
+      image: jinternals/demo-app:latest
+      container_name: demo-app-2
+      ports:
+        - "8082:8080"
+      environment: 
+        INSTANCE_ID: 2       
+
+   nginx:
+      image: nginx:latest
+      container_name: nginx
+      ports:
+        - "80:80"
+      volumes:
+        - ./infra/nginx/nginx.conf/:/etc/nginx/nginx.conf
+
+
